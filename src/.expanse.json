@@ -116,7 +116,7 @@
       "gltfModel": {
         "src": {
           "type": "asset",
-          "asset": "assets/LaCibeles_walk_talk_FINAL.glb"
+          "asset": "assets/LaCibeles_walk_talk_WEBAR.glb"
         },
         "animationClip": "LaCibeles_skinning_0007:skeleton|Take 001|BaseLayer",
         "loop": true
@@ -151,38 +151,6 @@
       },
       "name": "IMG_7635 image target",
       "order": -5
-    },
-    "9e986ee4-a384-4f55-a474-aadaa0577c1e": {
-      "id": "9e986ee4-a384-4f55-a474-aadaa0577c1e",
-      "position": [
-        0,
-        0,
-        0
-      ],
-      "rotation": [
-        -0.7071068,
-        0,
-        0,
-        0.7071068
-      ],
-      "scale": [
-        1,
-        1,
-        1
-      ],
-      "geometry": {
-        "type": "plane",
-        "width": 1,
-        "height": 1
-      },
-      "material": {
-        "type": "basic",
-        "color": "#FFFFFF"
-      },
-      "parentId": "c5c64a8a-bb4d-48dd-b5d5-cd507654a659",
-      "components": {},
-      "name": "Plane",
-      "order": 2.978328494925168
     }
   },
   "spaces": {
