@@ -1,5 +1,5 @@
 {
-  "imagePath": "image-targets/beer-label-target.jpg",
+  "imagePath": "image-targets/beer-label-simple-target.jpg",
   "name": "beer-label",
   "type": "PLANAR",
   "properties": {
@@ -14,5 +14,5 @@
   "userMetadataIsJson": true,
   "loadAutomatically": true,
   "created": 1785880800000,
-  "updated": 1785880800000
+  "updated": 1785881700000
 }
