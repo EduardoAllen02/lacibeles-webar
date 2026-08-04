@@ -27,9 +27,9 @@ en una URL de proyecto de GitHub Pages.
 
 ## Image target de prueba
 
-El target activo es `IMG_7635`, contenido en `image-targets/`. Es un logo de
-prueba “Futuristic Retro”, no la etiqueta definitiva de la botella. Para cambiar
-el target hay que reemplazar sus datos compilados y actualizar tanto
+El target activo es `beer-label`, contenido en `image-targets/`. Es una etiqueta
+monocromática de cerveza creada para pruebas, no la etiqueta definitiva de la
+botella. Para cambiar el target hay que reemplazar sus datos y actualizar tanto
 `src/app.ts` como el componente `imageTarget` de `src/.expanse.json`.
 
 ## Modelo y animación

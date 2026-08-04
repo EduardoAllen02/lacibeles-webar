@@ -1,0 +1,18 @@
+{
+  "imagePath": "image-targets/beer-label-target.jpg",
+  "name": "beer-label",
+  "type": "PLANAR",
+  "properties": {
+    "top": 0,
+    "left": 0,
+    "width": 1200,
+    "height": 1600,
+    "isRotated": false,
+    "originalWidth": 1200,
+    "originalHeight": 1600
+  },
+  "userMetadataIsJson": true,
+  "loadAutomatically": true,
+  "created": 1785880800000,
+  "updated": 1785880800000
+}

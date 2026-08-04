@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+  <rect width="1200" height="1600" fill="#fff"/>
+  <rect x="42" y="42" width="1116" height="1516" rx="42" fill="none" stroke="#000" stroke-width="22"/>
+  <rect x="78" y="78" width="1044" height="1444" rx="28" fill="none" stroke="#000" stroke-width="5"/>
+
+  <g fill="#000">
+    <circle cx="158" cy="155" r="36"/><circle cx="1042" cy="155" r="36"/>
+    <circle cx="158" cy="1445" r="36"/><circle cx="1042" cy="1445" r="36"/>
+    <path d="M110 250h310v18H110zM780 250h310v18H780z"/>
+    <path d="M105 1320h245v16H105zM850 1320h245v16H850z"/>
+  </g>
+
+  <g stroke="#000" fill="none" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M223 420c-88 88-90 210-28 313M180 458l-64-38M170 515l-73-12M170 575l-76 18M186 635l-69 42M215 695l-55 61"/>
+    <path d="M977 420c88 88 90 210 28 313M1020 458l64-38M1030 515l73-12M1030 575l76 18M1014 635l69 42M985 695l55 61"/>
+  </g>
+
+  <g transform="translate(340 350)">
+    <path d="M92 38h304l-17 560c-3 99-54 158-135 158s-132-59-135-158z" fill="#fff" stroke="#000" stroke-width="24"/>
+    <path d="M396 170h61c75 0 109 55 105 126l-10 164c-5 76-48 111-117 111h-47" fill="none" stroke="#000" stroke-width="24"/>
+    <path d="M397 234h39c35 0 49 23 47 59l-8 145c-2 38-20 55-54 55h-29" fill="none" stroke="#000" stroke-width="18"/>
+    <path d="M111 160h269l-10 327c-2 79-43 122-126 122s-124-43-126-122z" fill="#000"/>
+    <path d="M109 163c42-42 73 22 112-9 38-31 68 16 105-7 22-14 42-10 56 4l-3 88H110z" fill="#fff" stroke="#000" stroke-width="15"/>
+    <circle cx="148" cy="92" r="28" fill="#fff" stroke="#000" stroke-width="15"/>
+    <circle cx="223" cy="65" r="41" fill="#fff" stroke="#000" stroke-width="15"/>
+    <circle cx="315" cy="96" r="32" fill="#fff" stroke="#000" stroke-width="15"/>
+    <path d="M161 290v210M235 275v244M309 292v206" stroke="#fff" stroke-width="17"/>
+  </g>
+
+  <g fill="#000" text-anchor="middle" font-family="Arial, Helvetica, sans-serif">
+    <text x="600" y="225" font-size="108" font-weight="900" letter-spacing="9">LA CIBELES</text>
+    <text x="600" y="315" font-size="48" font-weight="700" letter-spacing="18">CERVEZA</text>
+    <text x="600" y="1190" font-size="88" font-weight="900" letter-spacing="5">EDICIÓN 2026</text>
+    <text x="600" y="1270" font-size="38" font-weight="700" letter-spacing="10">MALTA • LÚPULO • HISTORIA</text>
+    <text x="600" y="1467" font-size="46" font-weight="900" letter-spacing="12">WEB AR TEST</text>
+  </g>
+
+  <g fill="#000">
+    <path d="M240 1125l18 42 45 4-34 30 10 44-39-23-39 23 10-44-34-30 45-4z"/>
+    <path d="M960 1125l18 42 45 4-34 30 10 44-39-23-39 23 10-44-34-30 45-4z"/>
+    <path d="M456 1358h288v18H456z"/>
+    <circle cx="405" cy="1367" r="13"/><circle cx="795" cy="1367" r="13"/>
+    <path d="M130 880h120v24H130zM950 910h120v24H950zM155 960h165v14H155zM880 990h165v14H880z"/>
+    <circle cx="173" cy="840" r="18"/><circle cx="1008" cy="850" r="27"/>
+    <circle cx="278" cy="1035" r="25"/><circle cx="908" cy="1060" r="16"/>
+  </g>
+</svg>

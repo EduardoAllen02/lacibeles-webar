@@ -14,7 +14,7 @@ declare global {
 const configureImageTargets = () => {
   window.XR8?.XrController.configure({
     imageTargetData: [
-      require('../image-targets/IMG_7635.json'),
+      require('../image-targets/beer-label.json'),
     ],
   })
 }
