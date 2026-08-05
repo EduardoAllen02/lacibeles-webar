@@ -1,8 +1,7 @@
-# La Cibeles WebAR
+# La Cibeles Rubia WebAR
 
-Experiencia WebAR móvil exportada desde 8th Wall Expanse Studio. Todo el motor
-necesario se sirve desde este repositorio; no usa una API key ni requiere los
-servicios cloud de 8th Wall en tiempo de ejecución.
+Experiencia WebAR móvil para la etiqueta de La Cibeles Rubia. Todo el motor se
+sirve desde este repositorio y el despliegue está preparado para GitHub Pages.
 
 ## Desarrollo
 
@@ -13,8 +12,8 @@ npm ci
 npm run serve
 ```
 
-La cámara del móvil exige HTTPS. Para una prueba remota, usa el despliegue de
-GitHub Pages; el servidor local solo sirve para comprobar carga y consola.
+La cámara del móvil exige HTTPS. El servidor local sirve para revisar la carga,
+la interfaz y la consola; la prueba de tracking debe hacerse desde GitHub Pages.
 
 ## Build
 
@@ -22,26 +21,26 @@ GitHub Pages; el servidor local solo sirve para comprobar carga y consola.
 npm run build
 ```
 
-El resultado estático queda en `dist/`. Las rutas son relativas para funcionar
-en una URL de proyecto de GitHub Pages.
+El resultado estático queda en `dist/`. Todas las rutas son relativas para
+funcionar bajo la URL de proyecto de GitHub Pages.
 
-## Image target de prueba
+## Target final
 
-El target activo es `beer-label`, contenido en `image-targets/`. Es una etiqueta
-monocromática de cerveza creada para pruebas, no la etiqueta definitiva de la
-botella. Para cambiar el target hay que reemplazar sus datos y actualizar tanto
-`src/app.ts` como el componente `imageTarget` de `src/.expanse.json`.
+- Nombre: `rubia-label`
+- Imagen: `image-targets/rubia-front-target.jpg`
+- Fuente: arte final `RUBIA_NUEVA.pdf` del cliente
+- Zona reconocida: frente visible de la etiqueta, centrado en el rombo
 
-## Modelo y animación
+El recorte excluye los paneles laterales porque la curvatura de la botella los
+deforma y reduce la estabilidad del reconocimiento.
 
-- Modelo: `src/assets/LaCibeles_walk_talk_WEBAR_v5.glb`
+## Modelo, animación y narración
+
+- Modelo: `src/assets/LaCibeles_walk_talk_WEBAR_v6.glb`
 - Clip: `LaCibeles_skinning_0007:skeleton|Take 001|BaseLayer`
-- Reproducción: loop activado
+- Narración: `src/assets/LaCibeles_narracion.m4a`
+- Reproducción: una vez por detección inicial, con pausa si se pierde el target
 
-La variante WebAR conserva la geometría y la animación originales, recupera
-los colores de materiales declarados en Maya y compacta el skin a los 60 huesos
-que realmente tienen influencia. Esto evita índices superiores
-a 63 en runtimes móviles antiguos.
-
-El tamaño y la posición actuales son un punto de partida y deberán calibrarse
-en una prueba física con la etiqueta definitiva.
+El GLB conserva la geometría, materiales, pesos y las nueve animaciones del
+modelo corregido. La geometría usa compresión Draco para reducir la descarga de
+5.55 MB a 2.31 MB sin una diferencia visual apreciable.

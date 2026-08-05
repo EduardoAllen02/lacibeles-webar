@@ -25,6 +25,7 @@ const config = {
   output: {
     filename: 'bundle.js',
     path: distPath,
+    clean: true,
     // Keep every generated URL relative so the build works under a
     // GitHub Pages project path (/<owner>/<repo>/), not only at /.
     publicPath: './',

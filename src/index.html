@@ -1,28 +1,287 @@
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#1b2557">
+  <title>La Cibeles Rubia · Realidad Aumentada</title>
+  <meta name="description" content="Descubre la historia de La Cibeles Rubia en realidad aumentada.">
+  <meta property="og:title" content="La Cibeles Rubia · Realidad Aumentada">
+  <meta property="og:description" content="Apunta a la etiqueta y descubre a La Cibeles.">
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --brand: #263579;
+      --brand-light: #4357ae;
+      --paper: #f4f1e9;
+      --ink: #17204f;
+    }
 
-  <title>La Cibeles WebAR</title>
-  <meta itemprop="name" content="La Cibeles WebAR">
-  <meta name="twitter:title" content="La Cibeles WebAR">
-  <meta property="og:title" content="La Cibeles WebAR">
-  <meta property="og:site_name" content="La Cibeles WebAR">
-  <meta name="description" content="Experiencia WebAR de La Cibeles">
-  <meta itemprop="description" content="Experiencia WebAR de La Cibeles">
-  <meta property="og:description" content="Experiencia WebAR de La Cibeles">
-  <meta name="twitter:description" content="Experiencia WebAR de La Cibeles">
+    * { box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #0b1023;
+      overscroll-behavior: none;
+      touch-action: none;
+    }
+
+    canvas { position: fixed !important; inset: 0; }
+
+    button { font: inherit; }
+
+    .intro {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      padding: max(24px, env(safe-area-inset-top)) 22px max(24px, env(safe-area-inset-bottom));
+      background:
+        radial-gradient(circle at 50% 28%, rgba(89, 108, 190, .34), transparent 38%),
+        linear-gradient(145deg, rgba(10, 16, 42, .94), rgba(22, 32, 82, .97));
+      transition: opacity .4s ease, visibility .4s ease;
+    }
+
+    .intro.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    .intro-card {
+      width: min(100%, 410px);
+      padding: 30px 26px 24px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 28px;
+      background: rgba(247, 245, 239, .97);
+      color: var(--ink);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, .38);
+      text-align: center;
+    }
+
+    .brand-mark {
+      width: 84px;
+      height: 84px;
+      margin: 0 auto 18px;
+      display: grid;
+      place-items: center;
+      transform: rotate(45deg);
+      border: 2px solid rgba(38, 53, 121, .2);
+      border-radius: 19px;
+      background: linear-gradient(135deg, #fff, #e9e5dc);
+      box-shadow: 0 12px 30px rgba(27, 37, 93, .16);
+    }
+
+    .brand-mark span {
+      transform: rotate(-45deg);
+      color: var(--brand);
+      font-family: Georgia, serif;
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .eyebrow {
+      margin: 0 0 9px;
+      color: var(--brand-light);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(31px, 9vw, 42px);
+      line-height: 1.02;
+      letter-spacing: -.035em;
+    }
+
+    .intro-copy {
+      max-width: 310px;
+      margin: 16px auto 24px;
+      color: #505775;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .primary-button {
+      width: 100%;
+      min-height: 56px;
+      border: 0;
+      border-radius: 17px;
+      background: linear-gradient(135deg, var(--brand), #4056ac);
+      color: #fff;
+      box-shadow: 0 13px 26px rgba(38, 53, 121, .28);
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .intro-note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      margin: 16px 0 0;
+      color: #777d94;
+      font-size: 12px;
+    }
+
+    .intro-note::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4f65bc;
+      box-shadow: 0 0 0 4px rgba(79, 101, 188, .12);
+    }
+
+    .ar-status {
+      position: fixed;
+      z-index: 60;
+      top: max(17px, calc(env(safe-area-inset-top) + 8px));
+      left: 50%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: max-content;
+      max-width: calc(100vw - 34px);
+      min-height: 45px;
+      padding: 10px 16px 10px 12px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 999px;
+      background: rgba(12, 18, 43, .78);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, .25);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 650;
+      line-height: 1.2;
+      opacity: 0;
+      transform: translate(-50%, -12px);
+      transition: opacity .3s ease, transform .3s ease;
+      backdrop-filter: blur(16px) saturate(140%);
+    }
+
+    .ar-status.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+    .status-dot {
+      flex: 0 0 auto;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #e9c66c;
+      box-shadow: 0 0 0 5px rgba(233, 198, 108, .16);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    .ar-status[data-state="found"] .status-dot {
+      background: #73d8ab;
+      box-shadow: 0 0 0 5px rgba(115, 216, 171, .16);
+      animation: none;
+    }
+
+    .ar-status[data-state="paused"] .status-dot { background: #f1a36e; animation: none; }
+    .ar-status[data-state="complete"] .status-dot { background: #b5c4ff; animation: none; }
+
+    .controls {
+      position: fixed;
+      z-index: 60;
+      right: max(16px, env(safe-area-inset-right));
+      bottom: max(19px, calc(env(safe-area-inset-bottom) + 10px));
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .3s ease .15s, transform .3s ease .15s;
+      pointer-events: none;
+    }
+
+    .experience-started .controls { opacity: 1; transform: none; pointer-events: auto; }
+
+    .icon-button, .replay-button {
+      height: 48px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      background: rgba(12, 18, 43, .8);
+      color: #fff;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .24);
+      backdrop-filter: blur(16px) saturate(140%);
+      cursor: pointer;
+    }
+
+    .icon-button {
+      width: 48px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border-radius: 50%;
+    }
+
+    .icon-button svg { width: 21px; height: 21px; fill: currentColor; }
+    .icon-button .muted-icon { display: none; }
+    .icon-button.is-muted .sound-icon { display: none; }
+    .icon-button.is-muted .muted-icon { display: block; }
+
+    .replay-button {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      padding: 0 17px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .replay-button.is-visible { display: flex; }
+    .replay-button svg { width: 18px; height: 18px; fill: currentColor; }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(.8); opacity: .72; }
+      50% { transform: scale(1); opacity: 1; }
+    }
+
+    @media (max-height: 620px) {
+      .intro-card { padding: 22px 22px 19px; }
+      .brand-mark { width: 65px; height: 65px; margin-bottom: 13px; }
+      .brand-mark span { font-size: 27px; }
+      .intro-copy { margin: 11px auto 17px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
   <script crossorigin="anonymous" src="./external/runtime/runtime.js"></script>
-  <script crossorigin="anonymous" src="./external/xr/xr.js" async="true" data-preload-chunks="slam">
-  </script>
-
+  <script crossorigin="anonymous" src="./external/xr/xr.js" async data-preload-chunks="slam"></script>
 </head>
-
 <body>
-<script src="bundle.js?v=20260804-5"></script>
+  <section class="intro" id="intro" aria-labelledby="intro-title">
+    <div class="intro-card">
+      <div class="brand-mark" aria-hidden="true"><span>C</span></div>
+      <p class="eyebrow">La Cibeles · Rubia</p>
+      <h1 id="intro-title">Una historia cobra vida</h1>
+      <p class="intro-copy">Enfoca el rombo central de la etiqueta y conoce a la diosa que da nombre a esta cerveza.</p>
+      <button class="primary-button" id="start-experience" type="button">Comenzar experiencia</button>
+      <p class="intro-note">Activa la cámara y mantén el sonido encendido</p>
+    </div>
+  </section>
 
+  <div class="ar-status" id="ar-status" role="status" aria-live="polite" data-state="scanning">
+    <span class="status-dot" aria-hidden="true"></span>
+    <span id="ar-status-text">Preparando a La Cibeles…</span>
+  </div>
+
+  <nav class="controls" aria-label="Controles de la experiencia">
+    <button class="replay-button" id="replay" type="button" aria-label="Repetir narración">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5a7 7 0 1 1-6.32 4H8l-3.5-3.5L1 9h2.62A9 9 0 1 0 6.35 3.56l1.42 1.42A6.96 6.96 0 0 1 12 5Z"/></svg>
+      Repetir
+    </button>
+    <button class="icon-button" id="sound-toggle" type="button" aria-label="Silenciar narración" aria-pressed="false">
+      <svg class="sound-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Zm11.5 3a3.5 3.5 0 0 0-1.5-2.87v5.74A3.5 3.5 0 0 0 15.5 12Zm-1.5-8.54v2.06a7 7 0 0 1 0 12.96v2.06a9 9 0 0 0 0-17.08Z"/></svg>
+      <svg class="muted-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m16.5 12 3.25 3.25-1.5 1.5L15 13.5l-3.25 3.25-1.5-1.5L13.5 12l-3.25-3.25 1.5-1.5L15 10.5l3.25-3.25 1.5 1.5L16.5 12ZM4 9v6h4l5 4v-3.67L8.67 11 13 6.67V5L8 9H4Z"/></svg>
+    </button>
+  </nav>
+
+  <script src="bundle.js?v=20260805-1"></script>
 </body>
-
 </html>

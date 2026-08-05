@@ -1,0 +1,18 @@
+{
+  "imagePath": "image-targets/rubia-front-target.jpg",
+  "name": "rubia-label",
+  "type": "PLANAR",
+  "properties": {
+    "top": 0,
+    "left": 0,
+    "width": 1135,
+    "height": 1075,
+    "isRotated": false,
+    "originalWidth": 1135,
+    "originalHeight": 1075
+  },
+  "userMetadataIsJson": true,
+  "loadAutomatically": true,
+  "created": 1785920400000,
+  "updated": 1785920400000
+}

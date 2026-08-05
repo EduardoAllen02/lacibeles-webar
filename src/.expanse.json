@@ -5,6 +5,7 @@
       "geometry": null,
       "id": "47699d9e-18a5-4f88-a4f9-b8be92e8f74a",
       "light": {
+        "intensity": 1.2,
         "type": "ambient"
       },
       "material": null,
@@ -67,7 +68,7 @@
       "geometry": null,
       "id": "ac1989e3-3b71-49e2-a05f-e682aeb18c36",
       "light": {
-        "intensity": 1,
+        "intensity": 1.35,
         "type": "directional"
       },
       "material": null,
@@ -84,9 +85,9 @@
         1
       ],
       "scale": [
-        1,
-        1,
-        1
+        1.05,
+        1.05,
+        1.05
       ],
       "parentId": "88453035-dc0f-486d-868a-8ff7c2fda864",
       "order": 0.6644431107322474
@@ -112,14 +113,22 @@
       "geometry": null,
       "material": null,
       "parentId": "c5c64a8a-bb4d-48dd-b5d5-cd507654a659",
-      "components": {},
+      "components": {
+        "lacibeles-experience-controller": {
+          "id": "lacibeles-experience-controller",
+          "name": "lacibeles-experience",
+          "parameters": {}
+        }
+      },
       "gltfModel": {
         "src": {
           "type": "asset",
-          "asset": "assets/LaCibeles_walk_talk_WEBAR_v5.glb"
+          "asset": "assets/LaCibeles_walk_talk_WEBAR_v6.glb"
         },
         "animationClip": "LaCibeles_skinning_0007:skeleton|Take 001|BaseLayer",
-        "loop": true
+        "loop": false,
+        "paused": true,
+        "repetitions": 1
       },
       "name": "La Cibeles",
       "order": -4.231862749852638
@@ -147,9 +156,9 @@
       "parentId": "88453035-dc0f-486d-868a-8ff7c2fda864",
       "components": {},
       "imageTarget": {
-        "name": "beer-label"
+        "name": "rubia-label"
       },
-      "name": "Beer label image target",
+      "name": "Etiqueta Rubia La Cibeles",
       "order": -5
     }
   },
