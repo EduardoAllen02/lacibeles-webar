@@ -116,7 +116,7 @@
       "gltfModel": {
         "src": {
           "type": "asset",
-          "asset": "assets/LaCibeles_walk_talk_WEBAR.glb"
+          "asset": "assets/LaCibeles_walk_talk_WEBAR_v5.glb"
         },
         "animationClip": "LaCibeles_skinning_0007:skeleton|Take 001|BaseLayer",
         "loop": true
